@@ -1,4 +1,5 @@
-# JNI C++ Minecraft Demo
+# Unknown Detection Party
+### A Minecraft Cheat in C++
 
 Nothing big, just a small intro for kids wanting to make C++ injection clients (and no, this doesn't involve any Java code)
 
