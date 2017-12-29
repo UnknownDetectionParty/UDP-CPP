@@ -1,6 +1,8 @@
 # Unknown Detection Party
 ### A Minecraft Cheat in C++
 
+![](https://i.imgur.com/LhpA6Kl.png)
+
 Nothing big, just a small intro for kids wanting to make C++ injection clients (and no, this doesn't involve any Java code)
 
 The code is a mess, I already know, so don't bother ripping into me. I don't like C++, I don't aspire to be good in C++, I just do what works, and I never intend to make anything commercial either, so it really doesn't matter to me
