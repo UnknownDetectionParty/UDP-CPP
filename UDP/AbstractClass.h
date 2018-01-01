@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include <jvmti.h>
 #include "UDP.h"
+#include "Mapping.h"
 
 class AbstractClass
 {
@@ -128,8 +129,8 @@ protected:
 		return _static ? udp -> getEnv() -> GetStaticFieldID(cls, name, sig) : udp -> getEnv() -> GetFieldID(cls, name, sig);
 	}
 	jfieldID getFieldID(const char * name) {
-		CM cm = Mapping::getClass(clsKey);
-		Mem field = cm.fields[(char*)name];
+		Mapping::CM cm = Mapping::getClass(clsKey);
+		Mapping::Mem field = cm.fields[(char*)name];
 		return getFieldID(field.name, field.desc, field.isStatic);
 	}
 	jmethodID getMethodID(const char * name,
@@ -137,8 +138,8 @@ protected:
 		return _static ? udp -> getEnv() -> GetStaticMethodID(cls, name, sig) : udp -> getEnv() -> GetMethodID(cls, name, sig);
 	}
 	jmethodID getMethodID(const char * name) {
-		CM cm = Mapping::getClass(clsKey);
-		Mem method = cm.methods[(char*)name];
+		Mapping::CM cm = Mapping::getClass(clsKey);
+		Mapping::Mem method = cm.methods[(char*)name];
 		return getMethodID(method.name, method.desc, method.isStatic);
 	}
 

@@ -4,25 +4,29 @@
 
 using namespace std;
 
-struct CM {
-	char* name;
-	map<char*, Mem> fields;
-	map<char*, Mem> methods;
 
-	CM(char* clsName) : name(clsName) {}
-};
-
-struct Mem {
-	char* name;
-	char* desc;
-	bool isStatic;
-
-	Mem(char* memName, char* memDesc, bool stat) : name(memName), desc(memDesc), isStatic(stat) {}
-};
 
 class Mapping
 {
+
+
+
+
 public:
+	struct Mem {
+		char* name;
+		char* desc;
+		bool isStatic;
+		Mem(char* memName, char* memDesc, bool stat) : name(memName), desc(memDesc), isStatic(stat) {}
+	};
+
+	struct CM {
+		char* name;
+		map<char*, Mapping::Mem> fields;
+		map<char*, Mapping::Mem> methods;
+		CM(char* clsName) : name(clsName) {}
+	};
+
 	static map<char*, CM> lookup;
 	
 	Mapping() {
@@ -41,7 +45,7 @@ private:
 	// Setup lookup map
 	static void setup() {
 		// base - normal jvm classes
-		CM m = make("List", "java/util/List");
+		struct CM m = make("List", "java/util/List");
 		method(m, "get", "(I)Ljava/lang/Object;", false);
 		method(m, "toArray", "()[Ljava/lang/Object;", false);
 		method(m, "size", "()I", false);
@@ -90,7 +94,7 @@ private:
 	}
 
 	static CM make(char* key, char* name) {
-		CM cm = CM(name);
+		struct CM cm = CM(name);
 		lookup[key] = cm;
 		return cm;
 	}
