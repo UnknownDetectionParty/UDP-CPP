@@ -3,9 +3,11 @@
 
 ![](https://i.imgur.com/LhpA6Kl.png)
 
-Nothing big, just a small intro for kids wanting to make C++ injection clients (and no, this doesn't involve any Java code)
+Nothing big, just a small intro for (s)kids wanting to make C++ injection clients (and no, this doesn't involve any Java code)
 
 The code is a mess, I already know, so don't bother ripping into me. I don't like C++, I don't aspire to be good in C++, I just do what works, and I never intend to make anything commercial either, so it really doesn't matter to me
+
+Happy skidding!
 
 ### Getting Started With a Fresh Project
   - If you haven't already, install Visual Studio (If you already have a x64 C++ compile setup, just use that, but the next few steps will be for VS)
@@ -59,3 +61,7 @@ The code is a mess, I already know, so don't bother ripping into me. I don't lik
   - Change the compile mode at the top of Visual Studio to x64, and build the DLL (`Ctrl + Shift + B`)
 
 You should now have a built DLL to inject straight into Minecraft, and watch the magic unfold!
+
+### Disclaimer
+
+The code is shit, there's countless things I could do to improve the functionality (including toggle for the aimbot), but I really couldn't care less, so don't bother saying it's shit cause I'll just screenshot this disclaimer and link you to Chum Drum Bedrum
