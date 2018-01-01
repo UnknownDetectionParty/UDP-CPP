@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Minecraft">
+      <UniqueIdentifier>{f7562ffc-1d01-4857-b0a8-ba7ca88077f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Minecraft">
+      <UniqueIdentifier>{7fee39ca-d5c4-41b3-aa3d-d069179e4cbc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -21,16 +27,64 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UDP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Minecraft.h">
+      <Filter>Header Files\Minecraft</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityPlayerSP.h">
+      <Filter>Header Files\Minecraft</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractClass.h">
+      <Filter>Header Files\Minecraft</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files\Minecraft</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldClient.h">
+      <Filter>Header Files\Minecraft</Filter>
+    </ClInclude>
+    <ClInclude Include="JavaList.h">
+      <Filter>Header Files\Minecraft</Filter>
+    </ClInclude>
+    <ClInclude Include="JavaSet.h">
+      <Filter>Header Files\Minecraft</Filter>
+    </ClInclude>
+    <ClInclude Include="MathHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="UDP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Minecraft.cpp">
+      <Filter>Source Files\Minecraft</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityPlayerSP.cpp">
+      <Filter>Source Files\Minecraft</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractClass.cpp">
+      <Filter>Source Files\Minecraft</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\Minecraft</Filter>
+    </ClCompile>
+    <ClCompile Include="JavaList.cpp">
+      <Filter>Source Files\Minecraft</Filter>
+    </ClCompile>
+    <ClCompile Include="JavaSet.cpp">
+      <Filter>Source Files\Minecraft</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldClient.cpp">
+      <Filter>Source Files\Minecraft</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
