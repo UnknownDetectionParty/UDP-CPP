@@ -3,19 +3,19 @@
 #include "Minecraft.h"
 #include "EntityPlayerSP.h"
 
-EntityPlayerSP::EntityPlayerSP(UDP * udp, Minecraft * mc) : AbstractClass::AbstractClass(udp, "bub")
+EntityPlayerSP::EntityPlayerSP(UDP * udp, Minecraft * mc) : AbstractClass::AbstractClass(udp, "PlayerSP")
 {
 	this->mc = mc;
 
 	//Get all the field and method IDs for EntityPlayerSP that we want (mappings are for 1.12)
-	fdPosX = getFieldID("p", "D", false);
-	fdPosY = getFieldID("q", "D", false);
-	fdPosZ = getFieldID("r", "D", false);
-	fdRotationYaw = getFieldID("v", "F", false);
-	fdRotationPitch = getFieldID("w", "F", false);
-	mdGetId = getMethodID("S", "()I", false);
-	mdGetName = getMethodID("h_", "()Ljava/lang/String;", false);
-	mdSetSprinting = getMethodID("f", "(Z)V", false);
+	fdPosX = getFieldID("x");
+	fdPosY = getFieldID("y");
+	fdPosZ = getFieldID("z");
+	fdRotationYaw = getFieldID("yaw");
+	fdRotationPitch = getFieldID("pitch");
+	mdGetId = getMethodID("getID");
+	mdGetName = getMethodID("getName");
+	mdSetSprinting = getMethodID("setSprint");
 }
 
 jdouble EntityPlayerSP::getPosX() {

@@ -4,11 +4,11 @@
 #include "EntityPlayerSP.h"
 #include "WorldClient.h"
 
-Minecraft::Minecraft(UDP * udp) : AbstractClass::AbstractClass(udp, "bhz")
+Minecraft::Minecraft(UDP * udp) : AbstractClass::AbstractClass(udp, "Minecraft")
 {
-	smdGetMinecraft = getMethodID("z", "()Lbhz;", true);
-	fdPlayer = getFieldID("h", "Lbub;", false);
-	fdWorld = getFieldID("f", "Lbrz;", false);
+	smdGetMinecraft = getMethodID("getMinecraft");
+	fdPlayer = getFieldID("player");
+	fdWorld = getFieldID("world");
 }
 
 jobject Minecraft::getMinecraft() {

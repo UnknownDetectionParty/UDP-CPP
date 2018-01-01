@@ -2,11 +2,11 @@
 #include "Minecraft.h"
 #include "WorldClient.h"
 
-WorldClient::WorldClient(UDP * udp, Minecraft * mc) : AbstractClass::AbstractClass(udp, "brz")
+WorldClient::WorldClient(UDP * udp, Minecraft * mc) : AbstractClass::AbstractClass(udp, "WorldClient")
 {
 	this->mc = mc;
-	fdEntityList = getFieldID("K", "Ljava/util/Set;", false);
-	mdSetWorldTime = getMethodID("b", "(J)V", false);
+	fdEntityList = getFieldID("entities");
+	mdSetWorldTime = getMethodID("setTime");
 }
 
 jobject WorldClient::getEntityList() {

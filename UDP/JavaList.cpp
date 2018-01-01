@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "JavaList.h"
 
-JavaList::JavaList(UDP * udp, jobject list) : AbstractClass::AbstractClass(udp, "java/util/List")
+JavaList::JavaList(UDP * udp, jobject list) : AbstractClass::AbstractClass(udp, "List")
 {
-	mdGet = getMethodID("get", "(I)Ljava/lang/Object;", false);
-	mdSize = getMethodID("size", "()I", false);
-	mdToArray = getMethodID("toArray", "()[Ljava/lang/Object;", false);
+	mdGet = getMethodID("get");
+	mdSize = getMethodID("size");
+	mdToArray = getMethodID("toArray");
 
 	this->list = list;
 }

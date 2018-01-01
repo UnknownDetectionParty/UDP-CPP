@@ -2,17 +2,17 @@
 #include "Minecraft.h"
 #include "Entity.h"
 
-Entity::Entity(UDP * udp, Minecraft * mc, jobject entity) : AbstractClass::AbstractClass(udp, "ve")
+Entity::Entity(UDP * udp, Minecraft * mc, jobject entity) : AbstractClass::AbstractClass(udp, "Entity")
 {
 	this->mc = mc;
 	this->entity = entity;
 
 	//Get all the field and method IDs for Entity that we want (mappings are for 1.12)
-	fdPosX = getFieldID("p", "D", false);
-	fdPosY = getFieldID("q", "D", false);
-	fdPosZ = getFieldID("r", "D", false);
-	mdGetId = getMethodID("S", "()I", false);
-	mdGetName = getMethodID("h_", "()Ljava/lang/String;", false);
+	fdPosX = getFieldID("x");
+	fdPosY = getFieldID("y");
+	fdPosZ = getFieldID("z");
+	mdGetId = getMethodID("getID");
+	mdGetName = getMethodID("getName");
 }
 
 jdouble Entity::getPosX() {
