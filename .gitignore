@@ -1,0 +1,14 @@
+/UDP/ipch/
+/UDP/x64/
+/ipch/
+/x64/
+
+*.dll
+*.lib
+*.vcxproj
+*.filters
+*.user
+*.db
+*.opendb
+*.suo
+*.sln
