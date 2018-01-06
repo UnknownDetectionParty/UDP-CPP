@@ -1,10 +1,11 @@
-#include "stdafx.h"
 #include "JavaSet.h"
+#include "../AbstractClass.h"
+
 
 JavaSet::JavaSet(UDP * udp, jobject set) : AbstractClass::AbstractClass(udp, "Set")
 {
-	mdSize = getMethodID("size", "()I", false);
-	mdToArray = getMethodID("toArray", "()[Ljava/lang/Object;", false);
+	mdSize = getMethodID("size");
+	mdToArray = getMethodID("toArray");
 
 	this->set = set;
 }

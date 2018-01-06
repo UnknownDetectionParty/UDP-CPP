@@ -1,7 +1,6 @@
 #pragma once
 
-#include "stdafx.h"
-#include "AbstractClass.h"
+#include "../AbstractClass.h"
 
 class JavaSet : public AbstractClass
 {

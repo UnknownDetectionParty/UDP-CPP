@@ -1,5 +1,3 @@
-#include "stdafx.h"
-#include "UDP.h"
 #include "Minecraft.h"
 #include "EntityPlayerSP.h"
 

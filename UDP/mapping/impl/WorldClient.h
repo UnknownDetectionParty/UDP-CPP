@@ -1,8 +1,7 @@
 #pragma once
 
-#include "stdafx.h"
 #include "JavaSet.h"
-#include "AbstractClass.h"
+#include "../AbstractClass.h"
 
 class Minecraft;
 class WorldClient : public AbstractClass

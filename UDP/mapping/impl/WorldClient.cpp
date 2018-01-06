@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Minecraft.h"
 #include "WorldClient.h"
 

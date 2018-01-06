@@ -1,11 +1,11 @@
 ﻿#include "stdafx.h"
-#include "MathHelper.h"
 #include "UDP.h"
-#include "JavaList.h"
-#include "Minecraft.h"
-#include "EntityPlayerSP.h"
-#include "WorldClient.h"
-#include "Entity.h"
+#include "util/MathHelper.h"
+#include "mapping/impl/JavaList.h"
+#include "mapping/impl/Minecraft.h"
+#include "mapping/impl/EntityPlayerSP.h"
+#include "mapping/impl/WorldClient.h"
+#include "mapping/impl/Entity.h"
 
 UDP::UDP()
 {

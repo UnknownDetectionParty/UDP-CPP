@@ -1,33 +1,14 @@
 #pragma once
 #include <map>
 #include <string>
-
-using namespace std;
-
-
+#include "CM.h"
+#include "Mem.h"
+#include <iostream>
 
 class Mapping
 {
-
-
-
-
 public:
-	struct Mem {
-		char* name;
-		char* desc;
-		bool isStatic;
-		Mem(char* memName, char* memDesc, bool stat) : name(memName), desc(memDesc), isStatic(stat) {}
-	};
-
-	struct CM {
-		char* name;
-		map<char*, Mapping::Mem> fields;
-		map<char*, Mapping::Mem> methods;
-		CM(char* clsName) : name(clsName) {}
-	};
-
-	static map<char*, CM> lookup;
+	static std::map<char*, CM> lookup;
 	
 	Mapping() {
 		setup();
@@ -40,9 +21,7 @@ public:
 	static const char* getClassName(const char* key) {
 		return getClass(key).name;
 	}
-
 private:
-	// Setup lookup map
 	static void setup() {
 		// base - normal jvm classes
 		struct CM m = make("List", "java/util/List");
@@ -86,16 +65,16 @@ private:
 	}
 
 	static void field(CM cm, char* keyName, char* obName, char* desc, bool isStatic) {
-		cm.fields[keyName] = Mem(obName, desc, isStatic);
+		cm.fields.insert(std::make_pair(keyName, Mem(obName, desc, isStatic)));
 	}
 
 	static void method(CM cm, char* keyName, char* obName, char* desc, bool isStatic) {
-		cm.methods[keyName] = Mem(obName, desc, isStatic);
+		cm.methods.insert(std::make_pair(keyName, Mem(obName, desc, isStatic)));
 	}
 
 	static CM make(char* key, char* name) {
-		struct CM cm = CM(name);
-		lookup[key] = cm;
+		struct CM cm(name);
+		lookup.insert(std::make_pair(key, cm));
 		return cm;
 	}
 };

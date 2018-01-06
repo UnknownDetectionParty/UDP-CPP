@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "JavaList.h"
 
 JavaList::JavaList(UDP * udp, jobject list) : AbstractClass::AbstractClass(udp, "List")

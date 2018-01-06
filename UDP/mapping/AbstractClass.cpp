@@ -1,6 +1,4 @@
-#include "stdafx.h"
 #include "AbstractClass.h"
-#include "Mapping.h"
 
 AbstractClass::AbstractClass(UDP * udp, const char * clsName)
 {
