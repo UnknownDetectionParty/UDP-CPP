@@ -5,12 +5,16 @@
 #include "Mem.h"
 #include <iostream>
 
+// Basic centralization of mappings.
+// Current implementation is not ideal, but better than per-file mappings.
 class Mapping
 {
 public:
+	// Map of class names to mapping structures
 	static std::map<char*, CM> Mapping::lookup;
 	
 	Mapping() {
+		// Populate the map
 		setup();
 	}
 
@@ -23,6 +27,20 @@ public:
 	}
 private:
 	static void setup() {
+		// How to define mappings:
+		// --- Unobfuscated classes:
+		// 
+		//   Creating mappings for a class:
+		//
+		//                SimpleID,    InternalName
+		//       m = make("Set",       "java/util/Set");
+		//
+		//   Adding a member to the class: 
+		//              MappingInst,   MethodName,  InternalDescriptor,       IsStatic
+		//       method(m,             "get",       "(I)Ljava/lang/Object;",  false);
+		//
+		// -------------------------
+		//
 		// base - normal jvm classes
 		struct CM m = make("List", "java/util/List");
 		method(m, "get", "(I)Ljava/lang/Object;", false);
@@ -31,6 +49,20 @@ private:
 		m = make("Set", "java/util/Set");
 		method(m, "toArray", "()[Ljava/lang/Object;", false);
 		method(m, "size", "()I", false);
+		// How to define mappings:
+		// --- Obfuscated classes:
+		// 
+		//   Creating mappings for a class:
+		//
+		//                SimpleID,    ObfuscatedName
+		//       m = make("Entity",    "v");
+		//
+		//   Adding a member to the class: 
+		//              MappingInst,   SimpleID, ObfuscatedName, ObfuscatedDescriptor,  IsStatic
+		//       method(m,             "getID",  "S",            "()I",                 false);
+		//
+		// -----------------------------------
+		//
 		// obfuscated minecraft classes - 1.12
 		m = make("Entity", "ve");
 		field(m, "x", "p", "D", false);

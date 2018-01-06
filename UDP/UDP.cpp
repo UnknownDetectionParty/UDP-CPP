@@ -9,7 +9,7 @@
 
 UDP::UDP()
 {
-	//Get the jvm and jni environment
+	//Get the JVM and JNI environment
 	jsize count;
 	if (JNI_GetCreatedJavaVMs(&jvm, 1, &count) != JNI_OK || count == 0) {
 		std::cout << "Failed to get the JVM" << std::endl;
@@ -24,17 +24,24 @@ UDP::UDP()
 	}
 	std::cout << "Attached to JVM" << std::endl;
 
-	//Get the mineman instance, and the player and world
+	//Get the Minecraft instance
 	Minecraft * mc = new Minecraft(this);
-	EntityPlayerSP * player = mc->getPlayerContainer();
-	WorldClient * world = mc->getWorldContainer();
 
-	//Loop forever cause im lazy and like errors
+	// Infininte loop, very error-prone but good enough for the purpose of showiing that it works.
+	//
+	// In this case there is no null checking, so this will crash if the world is null,
+	// so inject while in-game. This will crash if you leave.
+	//
 	while (true) {
-		//Get all the entities
+		// This is in the loop so that the instances are current. IE, joining a new world not trying to reference the old one.
+		EntityPlayerSP * player = mc->getPlayerContainer();
+		WorldClient * world = mc->getWorldContainer();
+		// Ensure the player an world are not null (IE, check if in-game)
+		if (player == nullptr || world == nullptr) {
+			Sleep(1000);
+		}
+		//Get all the entities, calculate the closest one
 		JavaSet * entities = world->getEntities();
-
-		//Figure out the closest
 		double dist = 6;
 		Entity * closest = nullptr;
 		for (int i = 0; i < entities->size(); i++) {

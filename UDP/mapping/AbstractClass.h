@@ -125,22 +125,29 @@ protected:
 	const char* clsKey;
 	UDP * udp;
 	jclass cls;
-
+	// Field getter that uses the mapping class so only a clear-text name needs to be defined.
+	// "name" : Clear-text name used by 'Mapping.h' to define the field.
+	// Return: JNI field wrapper
 	jfieldID getFieldID(const char * name) {
 		CM cm = Mapping::getClass(clsKey);
 		Mem field = cm.fields.at((char*)name);
 		return getFieldID(field.name, field.desc, field.isStatic);
 	}
+	// Method getter that uses the mapping class so only a clear-text name needs to be defined.
+	// "name" : Clear-text name used by 'Mapping.h' to define the method.
+	// Return: JNI method wrapper
 	jmethodID getMethodID(const char * name) {
 		CM cm = Mapping::getClass(clsKey);
 		Mem method = cm.methods.at((char*)name);
 		return getMethodID(method.name, method.desc, method.isStatic);
 	}
 private:
+	// Return: JNI field wrapper
 	jfieldID getFieldID(const char * name,
 		const char * sig, bool _static) {
 		return _static ? udp->getEnv()->GetStaticFieldID(cls, name, sig) : udp->getEnv()->GetFieldID(cls, name, sig);
 	}
+	// Return: JNI method wrapper
 	jmethodID getMethodID(const char * name,
 		const char * sig, bool _static) {
 		return _static ? udp->getEnv()->GetStaticMethodID(cls, name, sig) : udp->getEnv()->GetMethodID(cls, name, sig);
