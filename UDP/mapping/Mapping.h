@@ -8,7 +8,7 @@
 class Mapping
 {
 public:
-	static std::map<char*, CM> lookup;
+	static std::map<char*, CM> Mapping::lookup;
 	
 	Mapping() {
 		setup();
