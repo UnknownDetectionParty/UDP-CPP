@@ -1,10 +1,11 @@
 #pragma once
 #include <map>
+#include <string>
 #include "Mem.h"
 
 struct CM {
 	char* name;
-	std::map<char*, Mem> fields;
-	std::map<char*, Mem> methods;
+	std::map<std::string, Mem> fields;
+	std::map<std::string, Mem> methods;
 	CM(char* clsName) : name(clsName) {}
 };
