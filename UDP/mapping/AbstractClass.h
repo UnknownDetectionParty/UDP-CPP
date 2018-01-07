@@ -129,16 +129,16 @@ protected:
 	// "name" : Clear-text name used by 'Mapping.h' to define the field.
 	// Return: JNI field wrapper
 	jfieldID getFieldID(const char * name) {
-		CM cm = Mapping::getClass(clsKey);
-		Mem field = cm.fields.at((char*)name);
+		CM* cm = Mapping::getClass(clsKey);
+		Mem field = cm->fields.at(std::string(name));
 		return getFieldID(field.name, field.desc, field.isStatic);
 	}
 	// Method getter that uses the mapping class so only a clear-text name needs to be defined.
 	// "name" : Clear-text name used by 'Mapping.h' to define the method.
 	// Return: JNI method wrapper
 	jmethodID getMethodID(const char * name) {
-		CM cm = Mapping::getClass(clsKey);
-		Mem method = cm.methods.at((char*)name);
+		CM* cm = Mapping::getClass(clsKey);
+		Mem method = cm->methods.at(std::string(name));
 		return getMethodID(method.name, method.desc, method.isStatic);
 	}
 private:

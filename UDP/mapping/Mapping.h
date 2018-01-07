@@ -5,25 +5,26 @@
 #include "Mem.h"
 #include <iostream>
 
+// Map of class names to mapping structures
+extern std::map<std::string, CM*> lookup;
+
 // Basic centralization of mappings.
 // Current implementation is not ideal, but better than per-file mappings.
 class Mapping
 {
 public:
-	// Map of class names to mapping structures
-	static std::map<char*, CM> Mapping::lookup;
-	
 	Mapping() {
 		// Populate the map
 		setup();
 	}
 
-	static CM getClass(const char* key) {
-		return lookup.at((char*)key);
+	static CM* getClass(const char* key) {		
+		CM* cm = lookup.at(std::string(key));
+		return cm;
 	}
 
 	static const char* getClassName(const char* key) {
-		return getClass(key).name;
+		return getClass(key)->name;
 	}
 private:
 	static void setup() {
@@ -42,7 +43,7 @@ private:
 		// -------------------------
 		//
 		// base - normal jvm classes
-		struct CM m = make("List", "java/util/List");
+		struct CM* m = make("List", "java/util/List");
 		method(m, "get", "(I)Ljava/lang/Object;", false);
 		method(m, "toArray", "()[Ljava/lang/Object;", false);
 		method(m, "size", "()I", false);
@@ -88,25 +89,31 @@ private:
 		method(m, "getMinecraft", "z", "()Lbhz;", true);
 	}
 
-	static void field(CM cm, char* name, char* desc, bool isStatic) {
+	static void field(CM *cm, char* name, char* desc, bool isStatic) {
 		field(cm, name, name, desc, isStatic);
 	}
 
-	static void method(CM cm, char* name, char* desc, bool isStatic) {
+	static void method(CM *cm, char* name, char* desc, bool isStatic) {
 		method(cm, name, name, desc, isStatic);
 	}
 
-	static void field(CM cm, char* keyName, char* obName, char* desc, bool isStatic) {
-		cm.fields.insert(std::make_pair(keyName, Mem(obName, desc, isStatic)));
+	static void field(CM *cm, char* keyName, char* obName, char* desc, bool isStatic) {
+		std::cout << "  Mapping " << obName << " to " << keyName << std::endl;
+		Mem *m = new Mem(obName, desc, isStatic);
+		cm->fields.insert(std::make_pair(std::string(keyName), *m));
 	}
 
-	static void method(CM cm, char* keyName, char* obName, char* desc, bool isStatic) {
-		cm.methods.insert(std::make_pair(keyName, Mem(obName, desc, isStatic)));
+	static void method(CM *cm, char* keyName, char* obName, char* desc, bool isStatic) {
+		std::cout << "  Mapping " << obName << desc << " to " << keyName << std::endl;
+		Mem *m = new Mem(obName, desc, isStatic);
+		cm->methods.insert(std::make_pair(std::string(keyName), *m));
 	}
 
-	static CM make(char* key, char* name) {
-		struct CM cm(name);
-		lookup.insert(std::make_pair(key, cm));
+	static CM* make(char* key, char* name) {
+		//struct CM cm(name);
+		struct CM *cm = new CM(name);
+		std::cout << "Mapping " << name << " to " << key << std::endl;
+		lookup.insert(std::make_pair(std::string(key), cm));
 		return cm;
 	}
 };

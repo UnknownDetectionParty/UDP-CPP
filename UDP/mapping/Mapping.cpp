@@ -1,2 +1,2 @@
 #include "Mapping.h"
-std::map<char*, CM> Mapping::lookup;
+std::map<std::string, CM*> lookup;
