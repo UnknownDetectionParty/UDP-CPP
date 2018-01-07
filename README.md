@@ -10,6 +10,9 @@ The code is a mess, I already know, so don't bother ripping into me. I don't lik
 Happy skidding!
 
 ### Getting Started With a Fresh Project
+
+You can either follow the text instructions below or [follow them via video](https://www.youtube.com/watch?v=rr_QV16jktw).
+
   - If you haven't already, install Visual Studio (If you already have a x64 C++ compile setup, just use that, but the next few steps will be for VS)
   - Start VS, and create a new project. Make sure to select `Visual C++ >> Windows Desktop >> Dynamic-Link Library (DLL)` as the project type. Give it a name and location, and create it
   - You can probably just delete the file it creates named `<your_project_name>.cpp` as you'll either create another later, or do everything in the `dllmain.cpp` file
