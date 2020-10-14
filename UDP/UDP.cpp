@@ -15,7 +15,7 @@ UDP::UDP()
 		std::cout << "Failed to get the JVM" << std::endl;
 		return;
 	}
-	jint res = jvm->GetEnv((void **)&env, JNI_VERSION_1_6);
+	jint res = jvm->GetEnv((void **)&env, JNI_VERSION_1_8); //for java 8
 	if (res == JNI_EDETACHED)
 		res = jvm->AttachCurrentThread((void **)&env, nullptr);
 	if (res != JNI_OK) {
